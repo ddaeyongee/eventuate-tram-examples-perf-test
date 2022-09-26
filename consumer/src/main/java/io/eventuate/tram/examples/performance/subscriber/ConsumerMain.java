@@ -57,11 +57,11 @@ public class ConsumerMain {
         return domainEventDispatcherFactory.make("eventDispatcher", target.domainEventHandlers());
     }
 
-//    @Bean
-//    public TopicPartitionToSwimlaneMapping topicPartitionToSwimlaneMapping() {
-//        // Must match spring.datasource.hikari.maximumPoolSize=50
-//        return (topicPartition, messageKey) -> Math.abs(Objects.hash(topicPartition, messageKey)) % 50;
-//    }
+    @Bean
+    public TopicPartitionToSwimlaneMapping topicPartitionToSwimlaneMapping() {
+        // Must match spring.datasource.hikari.maximumPoolSize=50
+        return (topicPartition, messageKey) -> Math.abs(Objects.hash(topicPartition, messageKey)) % 50;
+    }
 
     @Bean
     public TramEventTestEventConsumer tramEventTestTarget(MeterRegistry meterRegistry) {
